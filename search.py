@@ -7,7 +7,7 @@ def search_articles(pattern, page, iterator):
     url = 'https://www.blogdumoderateur.com/page/' + page + '?s=' + pattern
 
     response_bdm = requests.get(url)
-    soup_bdb = BeautifulSoup(response_bdm.text, features="lxml")
+    soup_bdb = BeautifulSoup(response_bdm.text)
     if response_bdm.status_code != 200:
         raise Exception('Erreur lors de la requête : {}'.format(response_bdm.status_code))
 
