@@ -25,7 +25,7 @@ with st.form('FormSearchArticle'):
 
 
     if st.form_submit_button('Lancer la recherche'):
-        articles = search_articles(pattern, page, int(iterator))
+        articles = search_articles(pattern, iterator, page)
 
 if articles != []:
     df = pd.DataFrame.from_dict(articles, orient='index')

@@ -2,7 +2,7 @@ import json
 from bs4 import BeautifulSoup
 import requests
 
-def search_articles(pattern, page, iterator):
+def search_articles(pattern, iterator, page):
     i = 0
     url = 'https://www.blogdumoderateur.com/page/' + page + '?s=' + pattern
 
@@ -15,7 +15,8 @@ def search_articles(pattern, page, iterator):
     articles = soup_bdb.find_all('article')
 
     if response_bdm.status_code == 200:
-        while i < iterator:
+        while i < int(iterator):
+            i += 1
             page = str(int(page) + 1)
             url = 'https://www.blogdumoderateur.com/page/' + page + '?s=' + pattern
             if requests.get(url).status_code == 200:
