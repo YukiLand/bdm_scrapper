@@ -3,3 +3,4 @@ streamlit
 bs4
 plotly
 matplotlib
+selenium
