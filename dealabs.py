@@ -154,6 +154,3 @@ def search_articles(keyword):
 
     database.select_table('deals')
 
-
-search_articles("pc portable")
-
