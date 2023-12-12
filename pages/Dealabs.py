@@ -1,14 +1,15 @@
 import streamlit as st
-import sqlite3
-conn = sqlite3.connect("data.db")
-c = conn.cursor()
+from dealabs import search_articles
+# import sqlite3
+# conn = sqlite3.connect("data.db")
+# c = conn.cursor()
 
 # Query and display the data you inserted
-list_deals = conn.query('select * from deals')
-st.dataframe(list_deals)
+# list_deals = conn.query('select * from deals')
+# st.dataframe(list_deals)
 
-c.execute("select count(*) from deals")
-db_size = c.fetchone()[0] 
+# c.execute("select count(*) from deals")
+# db_size = c.fetchone()[0] 
 
 st.set_page_config(page_title="Dealabs finder", page_icon="💲")
 
@@ -26,30 +27,36 @@ with st.form('FormSearchArticle'):
     #     iterator = st.text_input('Nombre de pages à parcourir')
 
 
-    if st.form_submit_button('Lancer la recherche'):
-        articles = search_articles_from_bdm(pattern, iterator, page)
+    # if st.form_submit_button('Lancer la recherche'):
+    #     articles = search_articles(pattern)
 
-if articles != []:
-    df = pd.DataFrame.from_dict(articles, orient='index')
-    df.to_csv('articles.csv')
-    st.download_button(
-        label="Télécharger les articles",
-        data=df.to_csv().encode('utf-8'),
-        file_name=pattern + '.csv',
-        mime='text/csv'
-    )
-    for article in articles:
-        # Création de colonnes
-        col1, col2 = st.columns(2)
+st.write(
+    """
+    # Dealabs finder
+    """
+)
 
-        with col1:
-            try:
-                st.image(articles[article]['image'])
-            except:
-                pass
+# if articles != []:
+#     df = pd.DataFrame.from_dict(articles, orient='index')
+#     df.to_csv('articles.csv')
+#     st.download_button(
+#         label="Télécharger les articles",
+#         data=df.to_csv().encode('utf-8'),
+#         file_name=pattern + '.csv',
+#         mime='text/csv'
+#     )
+#     for article in articles:
+#         # Création de colonnes
+#         col1, col2 = st.columns(2)
 
-        with col2:
-            st.write('##', articles[article]['title'])
-            st.write('###', articles[article]['date'], articles[article]['categorie'])
-            st.write('###', articles[article]['link'])
-        st.write('---')
+#         with col1:
+#             try:
+#                 st.image(articles[article]['image'])
+#             except:
+#                 pass
+
+#         with col2:
+#             st.write('##', articles[article]['title'])
+#             st.write('###', articles[article]['date'], articles[article]['categorie'])
+#             st.write('###', articles[article]['link'])
+#         st.write('---')
