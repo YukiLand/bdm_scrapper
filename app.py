@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from search import search_articles
+from bdm import search_articles_from_bdm
 
 st.set_page_config(
     page_title="My Streamlit App",
@@ -12,6 +12,8 @@ st.set_page_config(
 
 st.title("Article Finder")  
 articles = []
+
+st.sidebar.success("Select a demo above.")
 
 
 with st.form('FormSearchArticle'):
@@ -25,7 +27,7 @@ with st.form('FormSearchArticle'):
 
 
     if st.form_submit_button('Lancer la recherche'):
-        articles = search_articles(pattern, iterator, page)
+        articles = search_articles_from_bdm(pattern, iterator, page)
 
 if articles != []:
     df = pd.DataFrame.from_dict(articles, orient='index')
