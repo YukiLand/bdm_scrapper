@@ -1,20 +1,11 @@
 import streamlit as st
 from dealabs import search_articles
-# import sqlite3
-# conn = sqlite3.connect("data.db")
-# c = conn.cursor()
 
-# Query and display the data you inserted
-# list_deals = conn.query('select * from deals')
-# st.dataframe(list_deals)
 
-# c.execute("select count(*) from deals")
-# db_size = c.fetchone()[0] 
+# st.set_page_config(page_title="Dealabs finder", page_icon="💲")
 
-st.set_page_config(page_title="Dealabs finder", page_icon="💲")
-
-st.markdown("# Dealabs finder")
-st.sidebar.header("Dealabs")
+# st.markdown("# Dealabs finder")
+# st.sidebar.header("Dealabs")
 
 
 with st.form('FormSearchArticle'):
@@ -27,14 +18,9 @@ with st.form('FormSearchArticle'):
     #     iterator = st.text_input('Nombre de pages à parcourir')
 
 
-    # if st.form_submit_button('Lancer la recherche'):
-    #     articles = search_articles(pattern)
-
-st.write(
-    """
-    # Dealabs finder
-    """
-)
+    if st.form_submit_button('Lancer la recherche'):
+        articles = search_articles(pattern)
+        
 
 # if articles != []:
 #     df = pd.DataFrame.from_dict(articles, orient='index')

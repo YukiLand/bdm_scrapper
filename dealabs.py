@@ -1,9 +1,17 @@
 from selenium import webdriver
+from selenium.webdriver import ChromeOptions
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 # Gestion d'une base de données
 import sqlalchemy as db
+import os, sys
+
+# @st.experimental_singleton
+# def installff():
+#   os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+
+
 
 class DataBase():
     def __init__(self, name_database='dealabs'):
